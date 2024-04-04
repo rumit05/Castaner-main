@@ -1,0 +1,10 @@
+{
+     
+    "address1": "No se permiten caracteres que no sean ASCII en el campo dirección 2",
+    "address2": "No se permiten caracteres que no sean ASCII en el campo dirección 2",
+    "city": "No se permiten caracteres que no sean ASCII en el campo ciudad",
+    "phone": "No se permiten caracteres que no sean ASCII en el campo teléfono",
+    "firstName": "No se permiten caracteres que no sean ASCII en el campo nombre de pila",
+    "lastName": "No se permiten caracteres que no sean ASCII en el campo apellido"
+}
+    

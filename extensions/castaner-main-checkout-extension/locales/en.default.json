@@ -1,0 +1,9 @@
+{
+  "address1": "Non-ASCII characters are not allowed in the address 1 field",
+  "address2": "Non-ASCII characters are not allowed in the address 2 field",
+  "city": "Non-ASCII characters are not allowed in the city field",
+  "phone": "Non-ASCII characters are not allowed in the phone field",
+  "firstName": "Non-ASCII characters are not allowed in the first name field",
+  "lastName": "Non-ASCII characters are not allowed in the last name field"
+
+}

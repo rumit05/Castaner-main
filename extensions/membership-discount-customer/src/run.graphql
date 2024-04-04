@@ -1,0 +1,23 @@
+query RunInput {
+  cart {
+    buyerIdentity {
+      customer {
+        id
+        displayName
+        metafield(key: "percentage", namespace: "discount") {
+          # Include the specific subfields you want to retrieve
+          value
+        }
+        hasAnyTag
+      }
+    }
+    lines {
+      merchandise {
+        __typename
+        ... on ProductVariant {
+          id
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "6cc7c17d09781baca2975a3850fd628e"
+name = "Castaner Main Store App"
+handle = "castaner-main-extension"
+application_url = "https://commissioners-engaged-historic-hosting.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "ohd-mcc-development.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_checkout_branding_settings,write_checkout_branding_settings,write_pixels,read_shipping,write_shipping,read_customer_events,read_pixels,read_content,write_content,write_products,read_products,read_delivery_customizations,write_delivery_customizations,read_discounts,write_discounts,read_customers,write_customers"
+
+[auth]
+redirect_urls = [
+  "https://commissioners-engaged-historic-hosting.trycloudflare.com/auth/callback",
+  "https://commissioners-engaged-historic-hosting.trycloudflare.com/auth/shopify/callback",
+  "https://commissioners-engaged-historic-hosting.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-01"
+
+[pos]
+embedded = false
