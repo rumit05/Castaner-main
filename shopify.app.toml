@@ -3,7 +3,7 @@
 client_id = "6cc7c17d09781baca2975a3850fd628e"
 name = "Castaner Main Store App"
 handle = "castaner-main-extension"
-application_url = "https://commissioners-engaged-historic-hosting.trycloudflare.com"
+application_url = "https://scary-nightmare-zoo-tuition.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_checkout_branding_settings,write_checkout_branding_settings,write
 
 [auth]
 redirect_urls = [
-  "https://commissioners-engaged-historic-hosting.trycloudflare.com/auth/callback",
-  "https://commissioners-engaged-historic-hosting.trycloudflare.com/auth/shopify/callback",
-  "https://commissioners-engaged-historic-hosting.trycloudflare.com/api/auth/callback"
+  "https://scary-nightmare-zoo-tuition.trycloudflare.com/auth/callback",
+  "https://scary-nightmare-zoo-tuition.trycloudflare.com/auth/shopify/callback",
+  "https://scary-nightmare-zoo-tuition.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
