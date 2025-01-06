@@ -3,7 +3,7 @@
 client_id = "6cc7c17d09781baca2975a3850fd628e"
 name = "Castaner Main Store App"
 handle = "castaner-main-extension"
-application_url = "https://automobile-acdbentity-oasis-ahead.trycloudflare.com"
+application_url = "https://powell-lead-counts-super.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_customer_events,read_customers,read_delivery_customi
 
 [auth]
 redirect_urls = [
-  "https://automobile-acdbentity-oasis-ahead.trycloudflare.com/auth/callback",
-  "https://automobile-acdbentity-oasis-ahead.trycloudflare.com/auth/shopify/callback",
-  "https://automobile-acdbentity-oasis-ahead.trycloudflare.com/api/auth/callback"
+  "https://powell-lead-counts-super.trycloudflare.com/auth/callback",
+  "https://powell-lead-counts-super.trycloudflare.com/auth/shopify/callback",
+  "https://powell-lead-counts-super.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
