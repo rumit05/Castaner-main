@@ -25,7 +25,8 @@ function Extension() {
 
 
   const containsEmoji = () => {
-    const emojiRegex = /[^\x00-\x7F]/;
+    // const emojiRegex = /[^\x00-\x7F]/
+    const emojiRegex = /[^\x00-\x7F\u00C0-\u017F]/;  // Allow accented characters
 
     const invalidField = Object.keys(addressString).find(field => {
       const fieldValue = addressString[field];

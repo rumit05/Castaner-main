@@ -19647,7 +19647,7 @@ ${errorInfo.componentStack}`);
       setAddressString(data);
     }, [address]);
     const containsEmoji = () => {
-      const emojiRegex = /[^\x00-\x7F]/;
+      const emojiRegex = /[^\x00-\x7F\u00C0-\u017F]/;
       const invalidField = Object.keys(addressString).find((field) => {
         const fieldValue = addressString[field];
         if (fieldValue && emojiRegex.test(fieldValue)) {
