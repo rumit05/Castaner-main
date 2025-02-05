@@ -1,6 +1,7 @@
 query FetchInput {
   deliveryAddress{
     countryCode
+    zip
     longitude
     latitude
   }
