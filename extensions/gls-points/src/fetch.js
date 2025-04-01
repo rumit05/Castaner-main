@@ -1,12 +1,12 @@
 export function fetch(input) {
-    const { longitude, latitude, countryCode, zip } = input.deliveryAddress;
+    const { longitude, latitude, countryCode, zip, provinceCode    } = input.deliveryAddress;
 
-    if (!longitude || !latitude || !countryCode || !zip) {
+    if (!longitude || !latitude || !countryCode || !zip || !provinceCode) {
         return { response: { statusCode: 400, body: 'Invalid input parameters' }};
     }
 
     // Construct the request for the external API
-    const request = buildExternalApiRequest(latitude, longitude, countryCode, zip);
+    const request = buildExternalApiRequest(latitude, longitude, countryCode, zip ,provinceCode);
 
     return {
         request,
@@ -37,9 +37,9 @@ export function fetch(input) {
     };
 }
 
-function buildExternalApiRequest(latitude, longitude, countryCode, zip) {
+function buildExternalApiRequest(latitude, longitude, countryCode, zip , provinceCode) {
     // Construct the API URL with query parameters
-    const url = `https://brainboxinfoway.in/castaner/gls/gls-api.php?countryCode=${countryCode}&address=${zip}`;
+    const url = `https://brainboxinfoway.in/castaner/gls/gls-api.php?countryCode=${countryCode}&address=${zip}&provinceCode=${provinceCode}`;
 
     return {
         method: 'GET',
