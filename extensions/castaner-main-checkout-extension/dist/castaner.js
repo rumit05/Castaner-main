@@ -18752,16 +18752,18 @@
     if (seen.has(currentValue)) {
       return [IGNORE];
     }
-    seen.add(currentValue);
     if (typeof currentValue === "function" && FUNCTION_CURRENT_IMPLEMENTATION_KEY in currentValue) {
+      seen.add(currentValue);
       const result2 = [typeof newValue === "function" ? IGNORE : makeValueHotSwappable(newValue), [[currentValue, newValue]]];
       return result2;
     }
     if (Array.isArray(currentValue)) {
+      seen.add(currentValue);
       const result2 = tryHotSwappingArrayValues(currentValue, newValue, seen);
       return result2;
     }
     if (isBasicObject(currentValue) && !isRemoteFragment(currentValue)) {
+      seen.add(currentValue);
       const result2 = tryHotSwappingObjectValues(currentValue, newValue, seen);
       return result2;
     }
@@ -18805,7 +18807,6 @@
       seen.set(value, wrappedFunction);
       return wrappedFunction;
     }
-    seen.set(value, value);
     return value;
   }
   function collectNestedHotSwappableValues(value, seen = /* @__PURE__ */ new Set()) {
@@ -18884,8 +18885,12 @@
     const {
       strict
     } = rootInternals;
+    const childIndex = container.children.indexOf(child);
+    if (childIndex === -1) {
+      return void 0;
+    }
     return perform(container, rootInternals, {
-      remote: (channel) => channel(ACTION_REMOVE_CHILD, container.id, container.children.indexOf(child)),
+      remote: (channel) => channel(ACTION_REMOVE_CHILD, container.id, childIndex),
       local: () => {
         removeNodeFromContainer(child, rootInternals);
         const newChildren = [...internals.children];

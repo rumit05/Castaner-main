@@ -1145,7 +1145,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect3(create, deps) {
+          function useEffect2(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1928,7 +1928,7 @@
           exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect3;
+          exports.useEffect = useEffect2;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
@@ -18449,10 +18449,10 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx6 = jsxWithValidationDynamic;
+          var jsx5 = jsxWithValidationDynamic;
           var jsxs2 = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx6;
+          exports.jsx = jsx5;
           exports.jsxs = jsxs2;
         })();
       }
@@ -19140,7 +19140,7 @@
     return [hasChanged ? normalizedNewValue : IGNORE, hotSwaps];
   }
 
-  // node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
     const extensionWrapper = (target, implementation) => {
       var _shopify;
@@ -19171,16 +19171,19 @@
     return extensionWrapper;
   }
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Link/Link.mjs
-  var Link = createRemoteComponent("Link");
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack = createRemoteComponent("BlockStack");
 
-  // node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text = createRemoteComponent("Text");
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/TextField/TextField.mjs
+  var TextField = createRemoteComponent("TextField");
+
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_react6 = __toESM(require_react(), 1);
 
   // node_modules/@remote-ui/react/build/esm/render.mjs
@@ -19455,11 +19458,11 @@
     });
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
   var import_react5 = __toESM(require_react(), 1);
   var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
   var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
   function reactExtension(target, render3) {
     return extension(target, (root, api) => __async(this, null, function* () {
@@ -19508,28 +19511,25 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Link/Link.mjs
-  var Link2 = createRemoteReactComponent(Link, {
-    fragmentProps: ["overlay"]
-  });
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/BlockStack/BlockStack.mjs
+  var BlockStack2 = createRemoteReactComponent(BlockStack);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Text/Text.mjs
   var Text2 = createRemoteReactComponent(Text);
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
-  var import_react10 = __toESM(require_react(), 1);
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/TextField/TextField.mjs
+  var TextField2 = createRemoteReactComponent(TextField, {
+    fragmentProps: ["accessory"]
+  });
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  var import_react11 = __toESM(require_react(), 1);
+
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
     constructor(...args) {
       super(...args);
       this.name = "CheckoutUIExtensionError";
-    }
-  };
-  var ScopeNotGrantedError = class extends Error {
-    constructor(...args) {
-      super(...args);
-      this.name = "ScopeNotGrantedError";
     }
   };
   var ExtensionHasNoMethodError = class extends Error {
@@ -19539,78 +19539,38 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
-    const api = (0, import_react10.useContext)(ExtensionApiContext);
+    const api = (0, import_react11.useContext)(ExtensionApiContext);
     if (api == null) {
       throw new CheckoutUIExtensionError("You can only call this hook when running as a checkout UI extension.");
     }
     return api;
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
-  var import_react11 = __toESM(require_react(), 1);
-  function useSubscription(subscription) {
-    const [, setValue] = (0, import_react11.useState)(subscription.current);
-    (0, import_react11.useEffect)(() => {
-      let didUnsubscribe = false;
-      const checkForUpdates = (newValue) => {
-        if (didUnsubscribe) {
-          return;
-        }
-        setValue(newValue);
-      };
-      const unsubscribe = subscription.subscribe(checkForUpdates);
-      checkForUpdates(subscription.current);
-      return () => {
-        didUnsubscribe = true;
-        unsubscribe();
-      };
-    }, [subscription]);
-    return subscription.current;
-  }
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/buyer-journey.mjs
-  var import_react12 = __toESM(require_react(), 1);
-  function useBuyerJourneyIntercept(interceptor) {
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/attributes.mjs
+  function useApplyAttributeChange() {
     const api = useApi();
-    if (!("buyerJourney" in api)) {
-      throw new ExtensionHasNoMethodError("buyerJourney", api.extension.target);
+    if ("applyAttributeChange" in api) {
+      return api.applyAttributeChange;
     }
-    const interceptorRef = (0, import_react12.useRef)(interceptor);
-    interceptorRef.current = interceptor;
-    return (0, import_react12.useEffect)(() => {
-      const teardownPromise = api.buyerJourney.intercept((interceptorProps) => interceptorRef.current(interceptorProps));
-      return () => {
-        teardownPromise.then((teardown) => teardown()).catch(() => {
-        });
-      };
-    }, [api.buyerJourney]);
+    throw new ExtensionHasNoMethodError("applyAttributeChange", api.extension.target);
   }
 
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/shipping-address.mjs
-  function useShippingAddress() {
-    const shippingAddress = useApi().shippingAddress;
-    if (!shippingAddress) {
-      throw new ScopeNotGrantedError("Using shipping address requires having shipping address permissions granted to your app.");
-    }
-    return useSubscription(shippingAddress);
-  }
-
-  // node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/translate.mjs
-  var import_react13 = __toESM(require_react(), 1);
+  // extensions/pickup-point-custom-field/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/translate.mjs
+  var import_react12 = __toESM(require_react(), 1);
   function useTranslate() {
     const {
       i18n
     } = useApi();
-    const translate = (0, import_react13.useCallback)((...args) => {
+    const translate = (0, import_react12.useCallback)((...args) => {
       const translation = i18n.translate(...args);
       if (!Array.isArray(translation)) {
         return translation;
       }
       return translation.map((part, index) => {
-        if (/* @__PURE__ */ (0, import_react13.isValidElement)(part)) {
-          return /* @__PURE__ */ (0, import_react13.cloneElement)(part, {
+        if (/* @__PURE__ */ (0, import_react12.isValidElement)(part)) {
+          return /* @__PURE__ */ (0, import_react12.cloneElement)(part, {
             key: index
           });
         }
@@ -19620,58 +19580,41 @@ ${errorInfo.componentStack}`);
     return translate;
   }
 
-  // extensions/validation/src/ProvinceCode.jsx
+  // extensions/pickup-point-custom-field/src/Checkout.jsx
+  var import_react13 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var ProvinceCode_default = reactExtension(
-    "purchase.checkout.delivery-address.render-before",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {})
-  );
+  var Checkout_default = reactExtension("purchase.checkout.pickup-point-list.render-before", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
   function Extension() {
-    const address = useShippingAddress();
+    const applyAttributeChange = useApplyAttributeChange();
     const translate = useTranslate();
-    useBuyerJourneyIntercept(({ canBlockProgress }) => {
-      return canBlockProgress && (address == null ? void 0 : address.provinceCode) && (address.provinceCode === "CE" || address.provinceCode === "GC" || address.provinceCode === "ML" || address.provinceCode === "TF" || address.provinceCode === "ID" || address.provinceCode === "PR") ? {
-        behavior: "block",
-        reason: "Invalid shipping province/state",
-        errors: [
-          {
-            message: `${translate("provinscode")}`,
-            target: "$.cart.deliveryGroups[0].deliveryAddress.provinceCode"
-          }
-        ]
-      } : {
-        behavior: "allow"
-      };
-    });
-    return null;
-  }
-
-  // extensions/validation/src/CheckoutTC.jsx
-  var import_jsx_runtime5 = __toESM(require_jsx_runtime());
-  var CheckoutTC_default = reactExtension(
-    "purchase.checkout.block.render",
-    () => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Extension2, {})
-  );
-  function Extension2() {
-    const translate = useTranslate();
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Text2, { appearance: "accent", children: [
-      translate("TC"),
-      " ",
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Link2, { to: "https://castaner-ohd.myshopify.com/pages/condiciones-de-compra", children: [
-        " ",
-        translate("link"),
-        " "
-      ] }),
-      " ",
-      translate("and"),
-      " ",
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Link2, { to: "https://castaner-ohd.myshopify.com/pages/politica-de-privacidad", children: [
-        " ",
-        translate("link1"),
-        " "
-      ] }),
-      "."
+    const [name, setName] = (0, import_react13.useState)("");
+    const [lastName, setLastName] = (0, import_react13.useState)("");
+    const [number, setNumber] = (0, import_react13.useState)("");
+    const prevValues = (0, import_react13.useRef)({ name: "", lastName: "", number: "" });
+    (0, import_react13.useEffect)(() => {
+      const timeout = setTimeout(() => {
+        if (name && name !== prevValues.current.name) {
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup Name", value: name });
+          prevValues.current.name = name;
+        }
+        if (lastName && lastName !== prevValues.current.lastName) {
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup Last Name", value: lastName });
+          prevValues.current.lastName = lastName;
+        }
+        if (number && number !== prevValues.current.number) {
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup Number", value: number });
+          prevValues.current.number = number;
+        }
+        console.log("Updating attributes...");
+      }, 500);
+      return () => clearTimeout(timeout);
+    }, [name, lastName, number]);
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(BlockStack2, { spacing: "base", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { emphasis: "bold", size: "large", children: translate("pickup") }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextField2, { label: translate("name"), value: name, onChange: (value) => setName(value), required: true }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextField2, { label: translate("lastname"), value: lastName, onChange: (value) => setLastName(value), required: true }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(TextField2, { label: translate("number"), value: number, onChange: (value) => setNumber(value), required: true })
     ] });
   }
 })();
-//# sourceMappingURL=validation.js.map
+//# sourceMappingURL=pickup-point-custom-field.js.map
