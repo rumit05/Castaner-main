@@ -30,15 +30,15 @@ function Extension() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (name && name !== prevValues.current.name) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup Name', value: name });
+        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup User First Name :', value: name });
         prevValues.current.name = name;
       }
       if (lastName && lastName !== prevValues.current.lastName) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup Last Name', value: lastName });
+        applyAttributeChange({ type: 'updateAttribute', key: 'Pikckup User Last Name :', value: lastName });
         prevValues.current.lastName = lastName;
       }
       if (number && number !== prevValues.current.number) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup Number', value: number });
+        applyAttributeChange({ type: 'updateAttribute', key: 'Pikckup User Phone Number :', value: number });
         prevValues.current.number = number;
       }
 
