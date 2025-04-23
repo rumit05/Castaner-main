@@ -1,25 +1,19 @@
 import {
   reactExtension,
-  useDeliveryGroups,
-  useDeliveryGroup,
-  PhoneField,
   useApplyAttributeChange,
+  useBuyerJourneyIntercept,
   TextField,
   BlockStack,
   Text,
-  BlockLayout,
-  useApi,
   useTranslate
-  
 } from '@shopify/ui-extensions-react/checkout';
 import { useState, useEffect, useRef } from 'react';
 
-export default reactExtension('purchase.checkout.pickup-point-list.render-before', () => <Extension />);
+export default reactExtension('purchase.checkout.pickup-point-list.render-after', () => <Extension />);
 
 function Extension() {
   const applyAttributeChange = useApplyAttributeChange();
-    const translate = useTranslate()
-  
+  const translate = useTranslate();
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -27,6 +21,26 @@ function Extension() {
 
   const prevValues = useRef({ name: '', lastName: '', number: '' });
 
+  // Validation logic: block progress if fields are empty
+  useBuyerJourneyIntercept(({ canBlockProgress }) => {
+    if (canBlockProgress && (!name || !lastName || !number)) {
+      return {
+        behavior: 'block',
+        reason: 'Missing required fields',
+        errors: [
+          {
+            message: 'Please complete all required pickup fields.',
+          },
+        ],
+      };
+    }
+
+    return {
+      behavior: 'allow',
+    };
+  });
+
+  // Attribute syncing
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (name && name !== prevValues.current.name) {
@@ -41,20 +55,33 @@ function Extension() {
         applyAttributeChange({ type: 'updateAttribute', key: 'Pikckup User Phone Number :', value: number });
         prevValues.current.number = number;
       }
-
-      console.log("Updating attributes...");
     }, 500);
 
     return () => clearTimeout(timeout);
   }, [name, lastName, number]);
 
+  // UI
   return (
     <BlockStack spacing="base">
       <Text emphasis="bold" size="large">{translate("pickup")}</Text>
-      <TextField label={translate("name")} value={name} onChange={(value) => setName(value)} required />
-      <TextField label={translate("lastname")} value={lastName} onChange={(value) => setLastName(value)} required />
-      <TextField label={translate("number")} value={number} onChange={(value) => setNumber(value)} required />
+      <TextField
+        label={translate("name")}
+        value={name}
+        onChange={setName}
+        required
+      />
+      <TextField
+        label={translate("lastname")}
+        value={lastName}
+        onChange={setLastName}
+        required
+      />
+      <TextField
+        label={translate("number")}
+        value={number}
+        onChange={setNumber}
+        required
+      />
     </BlockStack>
   );
-  
 }
