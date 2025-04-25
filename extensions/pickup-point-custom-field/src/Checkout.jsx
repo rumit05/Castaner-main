@@ -5,7 +5,10 @@ import {
   TextField,
   BlockStack,
   Text,
-  useTranslate
+  useTranslate,
+  useApi,
+  BlockSpacer,
+  View
 } from '@shopify/ui-extensions-react/checkout';
 import { useState, useEffect, useRef } from 'react';
 
@@ -14,6 +17,8 @@ export default reactExtension('purchase.checkout.pickup-point-list.render-after'
 function Extension() {
   const applyAttributeChange = useApplyAttributeChange();
   const translate = useTranslate();
+  const { settings } = useApi();
+
 
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -63,7 +68,8 @@ function Extension() {
   // UI
   return (
     <BlockStack spacing="base">
-      <Text emphasis="bold" size="large">{translate("pickup")}</Text>
+      <BlockSpacer spacing="base" />
+       <Text emphasis="bold" size="large">{settings.current.pickup_fields_heading}</Text>
       <TextField
         label={translate("name")}
         value={name}
