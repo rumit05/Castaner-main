@@ -2,6 +2,9 @@
     "pickup": "Ritiro",
     "name": "Nome",
     "number": "Numero",
-    "lastname": "Cognome"
+    "lastname": "Cognome",
+    "nameerror" : "Inserisci il tuo Nome",
+    "numbererror" : "Inserisci il tuo numero",
+    "lastnameerror" : "Inserisci il tuo cognome"
 }
   

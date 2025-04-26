@@ -2,5 +2,8 @@
   "pickup": "Pickup",
   "name": "Name",
   "number": "Number",
-  "lastname": "Last Name"
+  "lastname": "Last Name",
+  "nameerror" : "Enter your Name",
+  "numbererror" : "Enter your Number",
+  "lastnameerror" : "Enter your last name"
 }

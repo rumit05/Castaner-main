@@ -2,6 +2,9 @@
     "pickup": "Recogida",
     "name": "Nombre",
     "number": "Teléfono",
-    "lastname": "Apellido"
+    "lastname": "Apellido",
+    "nameerror" : "Introduce tu nombre",
+    "numbererror" : "Introduce tu número",
+    "lastnameerror" : "Introduce tu apellido"
 }
   

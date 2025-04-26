@@ -8,7 +8,6 @@ import {
   useTranslate,
   useApi,
   BlockSpacer,
-  View
 } from '@shopify/ui-extensions-react/checkout';
 import { useState, useEffect, useRef } from 'react';
 
@@ -19,29 +18,39 @@ function Extension() {
   const translate = useTranslate();
   const { settings } = useApi();
 
-
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [number, setNumber] = useState('');
 
+  const [nameError, setNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
+  const [numberError, setNumberError] = useState('');
+
   const prevValues = useRef({ name: '', lastName: '', number: '' });
 
-  // Validation logic: block progress if fields are empty
+  // Buyer Journey Intercept
   useBuyerJourneyIntercept(({ canBlockProgress }) => {
-    if (canBlockProgress && (!name || !lastName || !number)) {
-      return {
-        behavior: 'block',
-        reason: 'Missing required fields',
-        errors: [
-          {
-            message: 'Please complete all required pickup fields.',
-          },
-        ],
-      };
+    if (canBlockProgress) {
+      if (!isNameSet() || !isLastNameSet() || !isNumberSet()) {
+        return {
+          behavior: 'block',
+          reason: 'Missing required fields',
+          perform: (result) => {
+            if (result.behavior === 'block') {
+              if (!isNameSet()) setNameError(translate("nameerror"));
+              if (!isLastNameSet()) setLastNameError(translate("lastnameerror"));
+              if (!isNumberSet()) setNumberError(translate("numbererror"));
+            }
+          },          
+        };
+      }
     }
 
     return {
       behavior: 'allow',
+      perform: () => {
+        clearValidationErrors();
+      },
     };
   });
 
@@ -65,27 +74,58 @@ function Extension() {
     return () => clearTimeout(timeout);
   }, [name, lastName, number]);
 
+  // Validation helpers
+  function isNameSet() {
+    return name.trim() !== '';
+  }
+  function isLastNameSet() {
+    return lastName.trim() !== '';
+  }
+  function isNumberSet() {
+    return number.trim() !== '';
+  }
+  function clearValidationErrors() {
+    setNameError('');
+    setLastNameError('');
+    setNumberError('');
+  }
+
   // UI
   return (
     <BlockStack spacing="base">
       <BlockSpacer spacing="base" />
-       <Text emphasis="bold" size="large">{settings.current.pickup_fields_heading}</Text>
+      <Text emphasis="bold" size="large">
+        {settings.current.pickup_fields_heading}
+      </Text>
+
       <TextField
         label={translate("name")}
         value={name}
-        onChange={setName}
+        onChange={(value) => {
+          setName(value);
+          if (nameError) setNameError(''); // Clear error when typing
+        }}
+        error={nameError}
         required
       />
       <TextField
         label={translate("lastname")}
         value={lastName}
-        onChange={setLastName}
+        onChange={(value) => {
+          setLastName(value);
+          if (lastNameError) setLastNameError('');
+        }}
+        error={lastNameError}
         required
       />
       <TextField
         label={translate("number")}
         value={number}
-        onChange={setNumber}
+        onChange={(value) => {
+          setNumber(value);
+          if (numberError) setNumberError('');
+        }}
+        error={numberError}
         required
       />
     </BlockStack>

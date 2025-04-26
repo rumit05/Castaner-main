@@ -2,5 +2,8 @@
   "pickup": "Prise en charge",
   "name": "Nom",
   "number": "Numéro",
-  "lastname": "Nom de famille"
+  "lastname": "Nom de famille",
+  "nameerror" : "Entrez votre nom",
+  "numbererror" : "Entrez votre numéro",
+  "lastnameerror" : "Entrez votre nom de famille"
 }

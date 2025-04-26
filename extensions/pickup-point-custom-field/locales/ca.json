@@ -2,6 +2,10 @@
     "pickup": "Recollida",
     "name": "Nom",
     "number": "Nombre",
-    "lastname": "Cognom"
+    "lastname": "Cognom",
+    "nameerror" : "Introdueix el teu nom",
+    "numbererror" : "Introdueix el teu número ",
+    "lastnameerror" : "Introdueix el teu cognom"
+
 }
   
