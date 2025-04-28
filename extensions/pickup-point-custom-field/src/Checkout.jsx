@@ -58,15 +58,15 @@ function Extension() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (name && name !== prevValues.current.name) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup User First Name :', value: name });
+        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup_by_firstname :', value: name });
         prevValues.current.name = name;
       }
       if (lastName && lastName !== prevValues.current.lastName) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pikckup User Last Name :', value: lastName });
+        applyAttributeChange({ type: 'updateAttribute', key: 'Pickup_by_lastname :', value: lastName });
         prevValues.current.lastName = lastName;
       }
       if (number && number !== prevValues.current.number) {
-        applyAttributeChange({ type: 'updateAttribute', key: 'Pikckup User Phone Number :', value: number });
+        applyAttributeChange({ type: 'updateAttribute', key: 'pickup_by_contact :', value: number });
         prevValues.current.number = number;
       }
     }, 500);

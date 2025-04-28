@@ -1,9 +1,9 @@
 {
   "pickup": "Pickup",
   "name": "Name",
-  "number": "Number",
+  "number": "Telephone",
   "lastname": "Last Name",
   "nameerror" : "Enter your Name",
-  "numbererror" : "Enter your Number",
+  "numbererror" : "Enter your Telephone",
   "lastnameerror" : "Enter your last name"
 }

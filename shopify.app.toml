@@ -3,7 +3,7 @@
 client_id = "6cc7c17d09781baca2975a3850fd628e"
 name = "Castaner Main Store App"
 handle = "castaner-main-extension"
-application_url = "https://restore-everything-quotations-personality.trycloudflare.com"
+application_url = "https://iran-replica-gourmet-bind.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_customer_events,read_customers,read_delivery_customi
 
 [auth]
 redirect_urls = [
-  "https://restore-everything-quotations-personality.trycloudflare.com/auth/callback",
-  "https://restore-everything-quotations-personality.trycloudflare.com/auth/shopify/callback",
-  "https://restore-everything-quotations-personality.trycloudflare.com/api/auth/callback"
+  "https://iran-replica-gourmet-bind.trycloudflare.com/auth/callback",
+  "https://iran-replica-gourmet-bind.trycloudflare.com/auth/shopify/callback",
+  "https://iran-replica-gourmet-bind.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

@@ -4,7 +4,7 @@
     "number": "Teléfono",
     "lastname": "Apellido",
     "nameerror" : "Introduce tu nombre",
-    "numbererror" : "Introduce tu número",
+    "numbererror" : "Introduce tu Teléfono",
     "lastnameerror" : "Introduce tu apellido"
 }
   
