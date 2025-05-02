@@ -19645,15 +19645,15 @@ ${errorInfo.componentStack}`);
     (0, import_react15.useEffect)(() => {
       const timeout = setTimeout(() => {
         if (name && name !== prevValues.current.name) {
-          applyAttributeChange({ type: "updateAttribute", key: "Pickup_by_firstname :", value: name });
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup User First Name", value: name });
           prevValues.current.name = name;
         }
         if (lastName && lastName !== prevValues.current.lastName) {
-          applyAttributeChange({ type: "updateAttribute", key: "Pickup_by_lastname :", value: lastName });
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup User Last Name", value: lastName });
           prevValues.current.lastName = lastName;
         }
         if (number && number !== prevValues.current.number) {
-          applyAttributeChange({ type: "updateAttribute", key: "pickup_by_contact :", value: number });
+          applyAttributeChange({ type: "updateAttribute", key: "Pickup User Phone Number", value: number });
           prevValues.current.number = number;
         }
       }, 500);
