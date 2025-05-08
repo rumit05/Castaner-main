@@ -19609,16 +19609,28 @@ ${errorInfo.componentStack}`);
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
   var Checkout_default = reactExtension("purchase.checkout.delivery-address.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
   function Extension() {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _i;
     const translate = useTranslate();
     const { countryCode } = useShippingAddress();
     const { amount } = useSubtotalAmount();
-    const showDisclaimer = (countryCode == null ? void 0 : countryCode.toLowerCase()) === "us" && amount > 800;
-    if (!showDisclaimer)
+    const { localization, settings } = useApi();
+    const languageCode = localization.language.current.isoCode.split("-")[0];
+    const tAmount = Number((_a = settings.current.cart_total) != null ? _a : 0);
+    const showDisclaimer = (countryCode == null ? void 0 : countryCode.toLowerCase()) === "us" && amount > tAmount;
+    if (!showDisclaimer || !(settings == null ? void 0 : settings.current))
       return null;
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "warning", padding: "tight", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: translate("intro") }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { emphasis: "bold", children: translate("recommendation") }) })
+    const enFirst = (_c = (_b = settings.current.description_text_en_first) == null ? void 0 : _b.trim()) != null ? _c : "";
+    const enSecond = (_e = (_d = settings.current.description_text_en_second) == null ? void 0 : _d.trim()) != null ? _e : "";
+    const esFirst = (_g = (_f = settings.current.description_text_es_first) == null ? void 0 : _f.trim()) != null ? _g : "";
+    const esSecond = (_i = (_h = settings.current.description_text_es_second) == null ? void 0 : _h.trim()) != null ? _i : "";
+    const content = languageCode === "en" ? /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "warning", padding: "tight", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: enFirst }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { emphasis: "bold", children: enSecond }) })
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(Banner2, { status: "warning", padding: "tight", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { children: esFirst }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(View2, { children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Text2, { emphasis: "bold", children: esSecond }) })
     ] });
+    return content;
   }
 })();
 //# sourceMappingURL=shipping-usa-text.js.map

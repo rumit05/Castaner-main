@@ -10,7 +10,6 @@ import {
   View
 } from "@shopify/ui-extensions-react/checkout";
 
-// 1. Choose an extension target
 export default reactExtension("purchase.checkout.delivery-address.render-after", () => (
   <Extension />
 ));
@@ -19,17 +18,34 @@ function Extension() {
   const translate = useTranslate();
   const { countryCode } = useShippingAddress();
   const { amount } = useSubtotalAmount();
+  const { localization, settings } = useApi();
 
-  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > 800;
+  const languageCode = localization.language.current.isoCode.split("-")[0];
+  const tAmount = Number(settings.current.cart_total ?? 0);
+  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > tAmount;
 
-  if (!showDisclaimer) return null;
+  if (!showDisclaimer || !settings?.current) return null;
 
-  return (
-    <Banner status= "warning" padding="tight">                
-      <Text>{translate("intro")}</Text>
+  const enFirst = settings.current.description_text_en_first?.trim() ?? "";
+  const enSecond = settings.current.description_text_en_second?.trim() ?? "";
+  const esFirst = settings.current.description_text_es_first?.trim() ?? "";
+  const esSecond = settings.current.description_text_es_second?.trim() ?? "";
+
+  const content = languageCode === "en" ? (
+    <Banner status="warning" padding="tight">
+      <Text>{enFirst}</Text>
       <View>
-      <Text emphasis="bold">{translate("recommendation")}</Text>
+        <Text emphasis="bold">{enSecond}</Text>
+      </View>
+    </Banner>
+  ) : (
+    <Banner status="warning" padding="tight">
+      <Text>{esFirst}</Text>
+      <View>
+        <Text emphasis="bold">{esSecond}</Text>
       </View>
     </Banner>
   );
+
+  return content;
 }
