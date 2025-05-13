@@ -19617,7 +19617,7 @@ ${errorInfo.componentStack}`);
     const languageCode = localization.language.current.isoCode.split("-")[0];
     console.log(languageCode, "======>");
     const tAmount = Number((_a = settings.current.cart_total) != null ? _a : 0);
-    const showDisclaimer = (countryCode == null ? void 0 : countryCode.toLowerCase()) === "es" && amount > tAmount;
+    const showDisclaimer = (countryCode == null ? void 0 : countryCode.toLowerCase()) === "us" && amount > tAmount;
     if (!showDisclaimer || !(settings == null ? void 0 : settings.current))
       return null;
     const enFirst = (_c = (_b = settings.current.description_text_en_first) == null ? void 0 : _b.trim()) != null ? _c : "";

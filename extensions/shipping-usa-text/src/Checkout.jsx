@@ -23,7 +23,7 @@ function Extension() {
   const languageCode = localization.language.current.isoCode.split("-")[0];
   console.log(languageCode,"======>")
   const tAmount = Number(settings.current.cart_total ?? 0);
-  const showDisclaimer = countryCode?.toLowerCase() === "es" && amount > tAmount;
+  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > tAmount;
 
   if (!showDisclaimer || !settings?.current) return null;
 
