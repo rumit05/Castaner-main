@@ -21,8 +21,9 @@ function Extension() {
   const { localization, settings } = useApi();
 
   const languageCode = localization.language.current.isoCode.split("-")[0];
+  console.log(languageCode,"======>")
   const tAmount = Number(settings.current.cart_total ?? 0);
-  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > tAmount;
+  const showDisclaimer = countryCode?.toLowerCase() === "es" && amount > tAmount;
 
   if (!showDisclaimer || !settings?.current) return null;
 
@@ -31,21 +32,23 @@ function Extension() {
   const esFirst = settings.current.description_text_es_first?.trim() ?? "";
   const esSecond = settings.current.description_text_es_second?.trim() ?? "";
 
-  const content = languageCode === "en" ? (
-    <Banner status="warning" padding="tight">
-      <Text>{enFirst}</Text>
-      <View>
-        <Text emphasis="bold">{enSecond}</Text>
-      </View>
-    </Banner>
-  ) : (
-    <Banner status="warning" padding="tight">
-      <Text>{esFirst}</Text>
-      <View>
-        <Text emphasis="bold">{esSecond}</Text>
-      </View>
-    </Banner>
-  );
+  // Fallback to English by default, only use Spanish if explicitly requested
+  const content =
+    languageCode === "es" ? (
+      <Banner status="warning" padding="tight">
+        <Text>{esFirst}</Text>
+        <View>
+          <Text emphasis="bold">{esSecond}</Text>
+        </View>
+      </Banner>
+    ) : (
+      <Banner status="warning" padding="tight">
+        <Text>{enFirst}</Text>
+        <View>
+          <Text emphasis="bold">{enSecond}</Text>
+        </View>
+      </Banner>
+    );
 
   return content;
 }

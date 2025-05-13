@@ -3,7 +3,7 @@
 client_id = "6cc7c17d09781baca2975a3850fd628e"
 name = "Castaner Main Store App"
 handle = "castaner-main-extension"
-application_url = "https://accessed-comic-reference-opposite.trycloudflare.com"
+application_url = "https://partnerships-scsi-payroll-jets.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_customer_events,read_customers,read_delivery_customi
 
 [auth]
 redirect_urls = [
-  "https://accessed-comic-reference-opposite.trycloudflare.com/auth/callback",
-  "https://accessed-comic-reference-opposite.trycloudflare.com/auth/shopify/callback",
-  "https://accessed-comic-reference-opposite.trycloudflare.com/api/auth/callback"
+  "https://partnerships-scsi-payroll-jets.trycloudflare.com/auth/callback",
+  "https://partnerships-scsi-payroll-jets.trycloudflare.com/auth/shopify/callback",
+  "https://partnerships-scsi-payroll-jets.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
