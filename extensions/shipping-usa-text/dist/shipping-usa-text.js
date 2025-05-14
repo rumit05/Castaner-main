@@ -19607,7 +19607,7 @@ ${errorInfo.componentStack}`);
 
   // extensions/shipping-usa-text/src/Checkout.jsx
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
-  var Checkout_default = reactExtension("purchase.checkout.delivery-address.render-after", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
+  var Checkout_default = reactExtension("purchase.checkout.block.render", () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {}));
   function Extension() {
     var _a, _b, _c, _d, _e, _f, _g, _h, _i;
     const translate = useTranslate();

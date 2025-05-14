@@ -3,7 +3,7 @@
 client_id = "6cc7c17d09781baca2975a3850fd628e"
 name = "Castaner Main Store App"
 handle = "castaner-main-extension"
-application_url = "https://zoo-proceed-knives-wise.trycloudflare.com"
+application_url = "https://indonesian-east-doctor-ps.trycloudflare.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_content,read_customer_events,read_customers,read_delivery_customi
 
 [auth]
 redirect_urls = [
-  "https://zoo-proceed-knives-wise.trycloudflare.com/auth/callback",
-  "https://zoo-proceed-knives-wise.trycloudflare.com/auth/shopify/callback",
-  "https://zoo-proceed-knives-wise.trycloudflare.com/api/auth/callback"
+  "https://indonesian-east-doctor-ps.trycloudflare.com/auth/callback",
+  "https://indonesian-east-doctor-ps.trycloudflare.com/auth/shopify/callback",
+  "https://indonesian-east-doctor-ps.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

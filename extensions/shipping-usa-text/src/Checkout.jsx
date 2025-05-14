@@ -10,10 +10,10 @@ import {
   View
 } from "@shopify/ui-extensions-react/checkout";
 
-export default reactExtension("purchase.checkout.delivery-address.render-after", () => (
+export default reactExtension("purchase.checkout.block.render", () => (
   <Extension />
 ));
-
+// purchase.checkout.delivery-address.render-after
 function Extension() {
   const translate = useTranslate();
   const { countryCode } = useShippingAddress();
