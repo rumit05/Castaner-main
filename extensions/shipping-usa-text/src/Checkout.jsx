@@ -22,7 +22,6 @@ function Extension() {
 
   const languageCode = localization.language.current.isoCode.split("-")[0];
   const tAmount = Number(settings.current.cart_total ?? 0);
-  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > tAmount;
 
   let amountInUSD = tAmount;
   if (currencyCode === "EUR") {
