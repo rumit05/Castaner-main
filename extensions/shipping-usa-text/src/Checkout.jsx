@@ -17,13 +17,19 @@ export default reactExtension("purchase.checkout.block.render", () => (
 function Extension() {
   const translate = useTranslate();
   const { countryCode } = useShippingAddress();
-  const { amount } = useSubtotalAmount();
+  const { amount, currencyCode } = useSubtotalAmount();
   const { localization, settings } = useApi();
 
   const languageCode = localization.language.current.isoCode.split("-")[0];
-  console.log(languageCode,"======>")
   const tAmount = Number(settings.current.cart_total ?? 0);
   const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > tAmount;
+
+  let amountInUSD = tAmount;
+  if (currencyCode === "EUR") {
+    const exchangeRate = Number(settings.current.exchange_rate_eur_to_usd ?? 0.9); // fallback = 1 if not set
+    amountInUSD = tAmount * exchangeRate;
+  }
+  const showDisclaimer = countryCode?.toLowerCase() === "us" && amount > amountInUSD;
 
   if (!showDisclaimer || !settings?.current) return null;
 
